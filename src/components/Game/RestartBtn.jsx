@@ -11,14 +11,8 @@ const RestartBtn = ({ progressBarWidth, restartGame, isDraw, winner }) => {
   ) : (
     <Button
       onClick={() => {}}
-      val={`${progressBarWidth}%`}
-      extraStyling={{
-        height: "30px",
-        marginTop: "10px",
-        width: `${progressBarWidth}%`,
-        alignSelf: "flex-start",
-        opacity:'.6'
-      }}
+      val={``}
+      extraStyling={{ height: "30px", marginTop: "10px", opacity: 0 }}
     />
   );
 };

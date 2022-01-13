@@ -7,6 +7,6 @@ export const FlexContainer = styled.div`
   align-items: center;
   width: 100%;
   height: 100%;
-  max-width: 500px;
+  /* max-width: 800px; */
 
 `;

@@ -1,15 +1,17 @@
 import styled, { css } from "styled-components";
 
 export const StyledSquare = styled.div`
-  flex: 33.3%;
-  height: 33.3%;
-  border: 2px solid #373737;
+  width: 2%;
+  height: 2%;
+  height: calc(1 / 2500); 
+  border: 1px solid #5a5a5a;
   cursor: pointer;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 30px;
+  font-size: 12px;
+  font-weight: bold;
   color: ${(props) => props.color};
   font-family: Arial, Helvetica, sans-serif;
   outline: none;

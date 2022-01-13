@@ -7,7 +7,7 @@ import { useGameReducer } from "../../reducers/gameReducer";
 
 const Game = () => {
   const [state, dispatch, reducerTypes] = useGameReducer();
-  const { board, winner, isDraw, progressBarWidth } = state;
+  const { board, winner, isDraw, progressBarWidth,firstClick } = state;
   useEffect(() => {
     dispatch({
       type: reducerTypes.CHECK_WINNER,
@@ -41,7 +41,7 @@ const Game = () => {
   return (
     <FlexContainer>
       <GameHeadMsg msg={headMsg} />
-      <Board squares={board} onSquareClick={onSquareClick} />
+      <Board squares={board} onSquareClick={onSquareClick} firstClick={firstClick}/>
       <RestartBtn
         progressBarWidth={progressBarWidth}
         restartGame={restartGame}

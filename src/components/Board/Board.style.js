@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const StyledBoard = styled.div`
   width: 100%;
-  max-height: 500px;
+  max-height: 800px;
   height: 100%;
   background-color: var(--mainColor);
   border: 1px solid black;

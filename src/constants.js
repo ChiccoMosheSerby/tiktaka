@@ -9,3 +9,5 @@ export const Patterns = [
     [2, 4, 6],
   ];
 export const initial3x3BoardState =Array(9).fill(null);
+export const initial50X50BoardState =Array(2500).fill(null);
+export const directionsValues = [1, -1, 50, -50, 51, -51, 49, -49];

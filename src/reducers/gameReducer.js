@@ -1,6 +1,6 @@
 import { useReducer } from "react";
-import { initial3x3BoardState } from "../constants";
-import { calculateWinner, checkIsDraw } from "../utils";
+import { initial3x3BoardState, initial50X50BoardState } from "../constants";
+import { calculateMultiWinner, calculateWinner, checkIsDraw } from "../utils";
 
 export const reducerTypes = {
   ON_SQUARE_CLICK: "onSquareClick",
@@ -10,16 +10,18 @@ export const reducerTypes = {
   CHECK_DRAW: "checkDraw",
 };
 const initialState = {
-  board: initial3x3BoardState,
+  board: initial50X50BoardState,
   xNext: true,
   winner: null,
   isDraw: false,
   progressBarWidth: 0,
+  lastPositionClicked: null,
+  firstClick: true,
 };
 
 const reducer = (state, action) => {
   const { type, payload } = action;
-  const { board, winner, xNext,  progressBarWidth } = state;
+  const { board, winner, xNext, progressBarWidth,lastPositionClicked } = state;
   const {
     ON_SQUARE_CLICK,
     RESTART_GAME,
@@ -33,13 +35,19 @@ const reducer = (state, action) => {
         return { ...state };
       }
       updatedBoard[payload.position] = xNext ? "X" : "O";
-      return { ...state, board: updatedBoard, xNext: !xNext };
+      return {
+        ...state,
+        firstClick : false,
+        board: updatedBoard,
+        xNext: !xNext,
+        lastPositionClicked: payload.position,
+      };
     }
     case RESTART_GAME: {
       return { ...initialState };
     }
     case CHECK_WINNER: {
-      const therIsWinner = calculateWinner(board);
+      const therIsWinner = calculateMultiWinner(board,lastPositionClicked);
       if (!!therIsWinner) {
         return {
           ...state,
@@ -50,7 +58,7 @@ const reducer = (state, action) => {
         if (draw) {
           return { ...state, isDraw: true };
         } else {
-          return { ...state, progressBarWidth: progressBarWidth + 10 };
+          return { ...state, progressBarWidth: progressBarWidth + 0.0004 };
         }
       }
     }
@@ -58,7 +66,7 @@ const reducer = (state, action) => {
       const draw = !winner ? checkIsDraw(board) : false;
       return { ...state, isDraw: draw };
     }
-     default :{
+    default: {
       throw new Error(`useGameReducer ERROR: Unhandled type: ${action.type}`);
     }
   }
