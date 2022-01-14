@@ -10,10 +10,11 @@ function App() {
     <Main>
       <GlobalStyle />
       {startGame ? (
-          <Game />
+        <Game />
       ) : (
         <StartForm startGameHandler={() => setStartGame(true)} />
       )}
+
     </Main>
   );
 }

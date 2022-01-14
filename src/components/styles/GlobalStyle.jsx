@@ -1,11 +1,13 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
- body {
+ body,html {
     font-family: "Nunito Sans";
     margin: 0;
     padding: 0;
     font-size: 13px;
+    padding: 0;
+    margin: 0;
   }
 
   :root{
