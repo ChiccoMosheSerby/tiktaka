@@ -23,7 +23,8 @@ const isWin = (ArrArrs) => {
   return false;
 };
 
-export function calculateMultiWinner(squares, position) {
+export function calculateWinnerExtendedVersion(squares, position,gameRuns) {
+  if(gameRuns < 9) return null
   const player = squares[position] ? squares[position] : "none";
   let directionValidationArrs = Array(possiblesVectorsValuesOnBoard.length).fill(0);
   possiblesVectorsValuesOnBoard.forEach((value, idx) => {

@@ -1,6 +1,6 @@
 import { useReducer } from "react";
-import { initial3x3BoardState, initial50X50BoardState } from "../constants";
-import { calculateMultiWinner, calculateWinner, checkIsDraw } from "../utils";
+import { initial50X50BoardState } from "../constants";
+import { calculateWinnerExtendedVersion, checkIsDraw } from "../utils";
 
 export const reducerTypes = {
   ON_SQUARE_CLICK: "onSquareClick",
@@ -16,12 +16,12 @@ const initialState = {
   isDraw: false,
   progressBarWidth: 0,
   lastPositionClicked: null,
-  firstClick: true,
+  gameRuns: 0,
 };
 
 const reducer = (state, action) => {
   const { type, payload } = action;
-  const { board, winner, xNext, progressBarWidth,lastPositionClicked } = state;
+  const { board, winner, xNext, progressBarWidth, lastPositionClicked,gameRuns } = state;
   const {
     ON_SQUARE_CLICK,
     RESTART_GAME,
@@ -37,7 +37,7 @@ const reducer = (state, action) => {
       updatedBoard[payload.position] = xNext ? "X" : "O";
       return {
         ...state,
-        firstClick : false,
+        gameRuns: gameRuns + 1,
         board: updatedBoard,
         xNext: !xNext,
         lastPositionClicked: payload.position,
@@ -47,7 +47,11 @@ const reducer = (state, action) => {
       return { ...initialState };
     }
     case CHECK_WINNER: {
-      const therIsWinner = calculateMultiWinner(board,lastPositionClicked);
+      const therIsWinner = calculateWinnerExtendedVersion(
+        board,
+        lastPositionClicked,
+        gameRuns
+      );
       if (!!therIsWinner) {
         return {
           ...state,

@@ -7,7 +7,8 @@ import { useGameReducer } from "../../reducers/gameReducer";
 
 const Game = () => {
   const [state, dispatch, reducerTypes] = useGameReducer();
-  const { board, winner, isDraw, progressBarWidth,firstClick } = state;
+  const { board, winner, isDraw, progressBarWidth,gameRuns } = state;
+  const firstClick = gameRuns < 1
   useEffect(() => {
     dispatch({
       type: reducerTypes.CHECK_WINNER,
