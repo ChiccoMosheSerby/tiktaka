@@ -16,7 +16,7 @@ export function calculateWinner(squares = []) {
 
 const isWin = (ArrArrs) => {
   for (let i = 0; i < ArrArrs.length; i++) {
-    if (ArrArrs[i] === 4) {
+    if (ArrArrs[i] > 3) {
       return true;
     }
   }
