@@ -7,25 +7,21 @@ const ScrollBar = (trackColor = "#fff", width = "4px") => {
       margin-right: 2px;
       width: ${width};
     }
-
     /* Track */
     &::-webkit-scrollbar-track {
       border-radius: 10px;
       background-color: ${trackColor};
     }
-
     /* Handle */
     &::-webkit-scrollbar-thumb {
       background: rgba(215, 215, 215, 0.9);
       border-radius: 10px;
       max-height: 94px;
     }
-
     /* Handle on hover */
     &::-webkit-scrollbar-thumb:hover {
       background: rgba(215, 215, 215, 1);
     }
-
     scrollbar-color: rgba(215, 215, 215, 1) ${trackColor};
     overflow-y: auto;
   `;
@@ -77,7 +73,6 @@ export const Modal = styled.div`
   overflow: visible;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-
   .head {
     display: flex;
     flex-direction: row;
@@ -106,7 +101,6 @@ export const Modal = styled.div`
     cursor: pointer;
     z-index: 10;
     font-size: 13px;
-
     background-color: transparent;
     border: none;
     :hover {
@@ -114,7 +108,6 @@ export const Modal = styled.div`
       border-radius: 50%;
     }
   }
-
   .dash {
     padding-left: 10px;
     font-size: 13px;
@@ -123,7 +116,6 @@ export const Modal = styled.div`
     color: #d4d4d4;
     pointer-events: none;
     position: relative;
-
     .dashDiv {
       padding-left: 10px;
       font-size: 16px;
@@ -141,7 +133,6 @@ export const Modal = styled.div`
       pointer-events: none;
     }
   }
-
   .reset {
     padding-left: 10px;
     font-size: 16px;
@@ -151,11 +142,9 @@ export const Modal = styled.div`
     justify-content: space-around;
     color: #808080;
   }
-
   svg {
     /* margin-right: 5px; */
   }
-
   .submitBtn {
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
@@ -179,14 +168,12 @@ export const Modal = styled.div`
     border: none;
     margin-bottom: 10px;
     cursor: pointer;
-
     @media (max-width: 860px) {
       width: 90%;
       justify-self: center;
       animation-name: ${null};
     }
   }
-
   ${ScrollBar()}
   ${({ extraStyling }) => extraStyling && extraStyling}
 `;
